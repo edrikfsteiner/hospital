@@ -20,7 +20,7 @@ A aplicação segue o padrão de arquitetura em camadas:
 
 ## **Execução do Projeto**
 ### **Pré-requisitos**
-- Java 17 e PostgreSQL
+- Java 17, Maven e PostgreSQL
 
 ### **Passos**
 1. Clone o repositório:
