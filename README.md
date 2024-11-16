@@ -48,7 +48,7 @@ A aplicação segue o padrão de arquitetura em camadas:
 | Listar todos os atendimentos         | `/atendimentos`              | `GET`       | Vazio                                                                 | `302 FOUND`          | `404 Not Found` - Não há atendimentos listados   |
 | Obter detalhes de um atendimento     | `/atendimentos/{id}`         | `GET`       | Vazio                                                                 | `302 FOUND`          | `404 Not Found` - Atendimento não encontrado      |
 | Criar um novo atendimento            | `/atendimentos`              | `POST`      | `{ "paciente": "João", "medico": "Dr. Silva", "data": "2024-11-15" }` | `201 Created`     | `400 Bad Request` - {dado} inválido               |
-| Atualizar os dados de um atendimento | `/atendimentos/{id}`         | `PUT`       | `{ "paciente": "Maria", "medico": "Dr. Lima", "data": "2024-12-01" }` | `200 OK`          | `404 Not Found` - Atendimento não encontrado      |
+| Atualizar os dados de um atendimento | `/atendimentos`         | `PUT`       | `{ "paciente": "Maria", "medico": "Dr. Lima", "data": "2024-12-01" }` | `200 OK`          | `404 Not Found` - Atendimento não encontrado      |
 | Deletar um atendimento               | `/atendimentos/{id}`         | `DELETE`    | Vazio                                                                 | `200 OK` - Atendimento deletado          | `404 Not Found` - Atendimento não encontrado      |
 
 ---
@@ -60,7 +60,7 @@ A aplicação segue o padrão de arquitetura em camadas:
 | Listar todos os medicamentos     | `/medicamentos`        | `GET`       | Vazio                                        | `200 OK`          | `404 Not Found` - Não há medicamentos listados |
 | Obter detalhes de um medicamento | `/medicamentos/{id}`   | `GET`       | Vazio                                        | `200 OK`          | `404 Not Found` - Medicamento não encontrado |
 | Criar um novo medicamento        | `/medicamentos`        | `POST`      | `{ "nome": "Paracetamol", "dosagem": "500mg" }` | `201 Created`     | `400 Bad Request` - {dado} inválido        |
-| Atualizar os dados de um medicamento | `/medicamentos/{id}` | `PUT`       | `{ "nome": "Dipirona", "dosagem": "1g" }` | `200 OK`          | `404 Not Found` - Medicamento não encontrado |
+| Atualizar os dados de um medicamento | `/medicamentos` | `PUT`       | `{ "nome": "Dipirona", "dosagem": "1g" }` | `200 OK`          | `404 Not Found` - Medicamento não encontrado |
 | Deletar um medicamento           | `/medicamentos/{id}`   | `DELETE`    | Vazio                                        | `200 OK` - Medicamento deletado          | `404 Not Found` - Medicamento não encontrado |
 
 ---
@@ -72,7 +72,7 @@ A aplicação segue o padrão de arquitetura em camadas:
 | Listar todas as receitas      | `/receitas`              | `GET`       | Vazio                                                                                              | `200 OK`          | `404 Not Found` - Nenhuma receita encontrada |
 | Obter detalhes de uma receita | `/receitas/{id}`         | `GET`       | Vazio                                                                                              | `200 OK`          | `404 Not Found` - Receita não encontrada     |
 | Criar uma nova receita        | `/receitas`              | `POST`      | `{ "atendimento": 1, "medicamentos": [1, 2], "instrucoes": "Tomar após as refeições." }`           | `201 Created`     | `400 Bad Request` - {dado} inválido          |
-| Atualizar os dados de uma receita | `/receitas/{id}`    | `PUT`       | `{ "medicamentos": [3], "instrucoes": "Tomar antes de dormir." }`                                  | `200 OK`          | `404 Not Found` - Receita não encontrada     |
+| Atualizar os dados de uma receita | `/receitas`    | `PUT`       | `{ "medicamentos": [3], "instrucoes": "Tomar antes de dormir." }`                                  | `200 OK`          | `404 Not Found` - Receita não encontrada     |
 | Deletar uma receita           | `/receitas/{id}`         | `DELETE`    | Vazio                                                                                              | `200 OK` - Receita deletada          | `404 Not Found` - Receita não encontrada     |
 
 ---
