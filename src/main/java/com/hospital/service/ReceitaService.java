@@ -48,9 +48,9 @@ public class ReceitaService {
     }
 
     public ResponseEntity<?> create(ReceitaDTO dto) {
-        Optional<Receita> receita = repository.findById(dto.getId());
-        Optional<Atendimento> atendimento = atendimentoRepository.findById(dto.getAtendimento());
-        List<Long> medicamentosId = dto.getMedicamentos();
+        Optional<Receita> receita = repository.findById(dto.id());
+        Optional<Atendimento> atendimento = atendimentoRepository.findById(dto.atendimento());
+        List<Long> medicamentosId = dto.medicamentos();
         List<Medicamento> medicamentos = medicamentoRepository.findAllById(medicamentosId);
 
         if (receita.isEmpty()) {
@@ -67,7 +67,7 @@ public class ReceitaService {
             String mensagem = String.format("Medicamentos inválidos: %s", idsInvalidos);
 
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else if (dto.getInstrucoes().isBlank()) {
+        } else if (dto.instrucoes().isBlank()) {
             return new ResponseEntity<>("Instruções inválidas", HttpStatus.BAD_REQUEST);
         }
 
@@ -78,9 +78,9 @@ public class ReceitaService {
     }
 
     public ResponseEntity<?> edit(ReceitaDTO dto) {
-        Optional<Receita> receita = repository.findById(dto.getId());
-        Optional<Atendimento> atendimento = atendimentoRepository.findById(dto.getAtendimento());
-        List<Medicamento> medicamentos = medicamentoRepository.findAllById(dto.getMedicamentos());
+        Optional<Receita> receita = repository.findById(dto.id());
+        Optional<Atendimento> atendimento = atendimentoRepository.findById(dto.atendimento());
+        List<Medicamento> medicamentos = medicamentoRepository.findAllById(dto.medicamentos());
 
         if (receita.isEmpty()) {
             return new ResponseEntity<>("Receita não encontrada", HttpStatus.NOT_FOUND);
@@ -88,7 +88,7 @@ public class ReceitaService {
             return new ResponseEntity<>("Atendimento inválido", HttpStatus.BAD_REQUEST);
         } else if (medicamentos.isEmpty()) {
             return new ResponseEntity<>("Medicamentos inválidos", HttpStatus.BAD_REQUEST);
-        } else if (dto.getInstrucoes().isBlank()) {
+        } else if (dto.instrucoes().isBlank()) {
             return new ResponseEntity<>("Instruções inválidas", HttpStatus.BAD_REQUEST);
         }
 

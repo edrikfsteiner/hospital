@@ -40,11 +40,11 @@ public class AtendimentoService {
     }
 
     public ResponseEntity<?> create(AtendimentoDTO dto) {
-        if (dto.getPaciente().isBlank()) {
+        if (dto.paciente().isBlank()) {
             return new ResponseEntity<>("Paciente inválido", HttpStatus.BAD_REQUEST);
-        } else if (dto.getMedico().isBlank()) {
+        } else if (dto.medico().isBlank()) {
             return new ResponseEntity<>("Médico inválido", HttpStatus.BAD_REQUEST);
-        } else if (dto.getData().isBlank()) {
+        } else if (dto.data().isBlank()) {
             return new ResponseEntity<>("Data inválida", HttpStatus.BAD_REQUEST);
         }
 
@@ -55,15 +55,15 @@ public class AtendimentoService {
     }
 
     public ResponseEntity<?> edit(AtendimentoDTO dto) {
-        Optional<Atendimento> atendimento = repository.findById(dto.getId());
+        Optional<Atendimento> atendimento = repository.findById(dto.id());
 
         if (atendimento.isEmpty()) {
             return new ResponseEntity<>("Atendimento não encontrado", HttpStatus.NOT_FOUND);
-        } else if (dto.getPaciente().isBlank()) {
+        } else if (dto.paciente().isBlank()) {
             return new ResponseEntity<>("Paciente inválido", HttpStatus.BAD_REQUEST);
-        } else if (dto.getMedico().isBlank()) {
+        } else if (dto.medico().isBlank()) {
             return new ResponseEntity<>("Médico inválido", HttpStatus.BAD_REQUEST);
-        } else if (dto.getData().isBlank()) {
+        } else if (dto.data().isBlank()) {
             return new ResponseEntity<>("Data inválida", HttpStatus.BAD_REQUEST);
         }
 

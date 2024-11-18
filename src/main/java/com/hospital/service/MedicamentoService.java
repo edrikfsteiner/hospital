@@ -38,9 +38,9 @@ public class MedicamentoService {
     }
 
     public ResponseEntity<?> create(MedicamentoDTO dto) {
-        if (dto.getNome().isBlank()) {
+        if (dto.nome().isBlank()) {
             return new ResponseEntity<>("Nome inválido", HttpStatus.BAD_REQUEST);
-        } else if (dto.getDosagem().isBlank()) {
+        } else if (dto.dosagem().isBlank()) {
             return new ResponseEntity<>("Dosagem inválida", HttpStatus.BAD_REQUEST);
         }
 
@@ -51,13 +51,13 @@ public class MedicamentoService {
     }
 
     public ResponseEntity<?> edit(MedicamentoDTO dto) {
-        Optional<Medicamento> medicamento = repository.findById(dto.getId());
+        Optional<Medicamento> medicamento = repository.findById(dto.id());
 
         if (medicamento.isEmpty()) {
             return new ResponseEntity<>("Medicamento não encontrado", HttpStatus.NOT_FOUND);
-        } else if (dto.getNome().isBlank()) {
+        } else if (dto.nome().isBlank()) {
             return new ResponseEntity<>("Nome inválido", HttpStatus.BAD_REQUEST);
-        } else if (dto.getDosagem().isBlank()) {
+        } else if (dto.dosagem().isBlank()) {
             return new ResponseEntity<>("Dosagem inválida", HttpStatus.BAD_REQUEST);
         }
 

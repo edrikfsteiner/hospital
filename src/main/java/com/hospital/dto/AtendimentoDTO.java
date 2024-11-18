@@ -1,12 +1,3 @@
 package com.hospital.dto;
 
-import lombok.Data;
-
-@Data
-public class AtendimentoDTO {
-    private Long id;
-    private Long receita;
-    private String paciente;
-    private String medico;
-    private String data;
-}
+public record AtendimentoDTO(Long id, Long receita, String paciente, String medico, String data) {}

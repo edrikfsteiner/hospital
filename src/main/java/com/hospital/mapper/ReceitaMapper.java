@@ -9,21 +9,18 @@ import java.util.List;
 
 public class ReceitaMapper {
     public static ReceitaDTO toDTO(Receita model) {
-        ReceitaDTO dto = new ReceitaDTO();
-        dto.setId(model.getId());
-        dto.setAtendimento(
-                model.getAtendimento() != null ? model.getAtendimento().getId() : null
+        return new ReceitaDTO(
+                model.getId(),
+                model.getAtendimento() != null ? model.getAtendimento().getId() : null,
+                model.getMedicamentos().stream().map(Medicamento::getId).toList(),
+                model.getInstrucoes()
         );
-        dto.setMedicamentos(model.getMedicamentos().stream().map(Medicamento::getId).toList());
-        dto.setInstrucoes(model.getInstrucoes());
-
-        return dto;
     }
 
     public static Receita toModel(ReceitaDTO dto) {
         Receita model = new Receita();
         Atendimento atendimento = new Atendimento();
-        List<Medicamento> medicamentos = dto.getMedicamentos()
+        List<Medicamento> medicamentos = dto.medicamentos()
                 .stream()
                 .map(id -> {
                     Medicamento medicamento = new Medicamento();
@@ -31,11 +28,11 @@ public class ReceitaMapper {
                     return medicamento;
                 })
                 .toList();
-        atendimento.setId(dto.getAtendimento());
-        model.setId(dto.getId());
+        atendimento.setId(dto.atendimento());
+        model.setId(dto.id());
         model.setAtendimento(atendimento);
         model.setMedicamentos(medicamentos);
-        model.setInstrucoes(dto.getInstrucoes());
+        model.setInstrucoes(dto.instrucoes());
 
         return model;
     }
