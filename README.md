@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento Hospitalar
+# Sistema Hospitalar
 
 ## **Descrição**
 Este projeto é uma aplicação de gerenciamento hospitalar que permite o controle de **Atendimentos**, **Medicamentos** e **Receitas**. A aplicação foi desenvolvida utilizando arquitetura em camadas e conta com endpoints CRUD para cada um desses recursos.
