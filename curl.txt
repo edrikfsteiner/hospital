@@ -1,0 +1,71 @@
+ATENDIMENTOS
+
+curl -X GET http://localhost:8080/atendimentos
+
+curl -X GET http://localhost:8080/atendimentos/1
+
+curl -X POST http://localhost:8080/atendimentos -H "Content-Type: application/json" -d '{
+	"paciente": "Ana",
+	"medico": "Alberto",
+	"data": "2024-11-14T15:00:00"
+}'
+
+curl -X PUT http://localhost:8080/atendimentos -H "Content-Type: application/json" -d '{
+	"id": 1,
+	"receita": 1,
+	"paciente": "Marco",
+	"medico": "Lazario",
+	"data": "2024-11-14T20:00:00"
+}'
+
+curl -X DELETE http://localhost:8080/atendimentos/1
+
+
+MEDICAMENTOS
+
+curl -X GET http://localhost:8080/medicamentos
+
+curl -X GET http://localhost:8080/medicamentos/1
+
+curl -X POST http://localhost:8080/medicamentos -H "Content-Type: application/json" -d '{
+	"nome": "Histamin",
+	"dosagem": "1 capsula ao dia"
+}'
+curl -X POST http://localhost:8080/medicamentos -H "Content-Type: application/json" -d '{
+	"nome": "Paracetamol",
+	"dosagem": "2 capsulas ao dia"
+}'
+curl -X POST http://localhost:8080/medicamentos -H "Content-Type: application/json" -d '{
+	"nome": "Ibuprofeno",
+	"dosagem": "3 capsulas ao dia"
+}'
+
+curl -X PUT http://localhost:8080/medicamentos -H "Content-Type: application/json" -d '{
+	"id": 3,
+	"nome": "Ibuprofeno",
+	"dosagem": "4 capsulas ao dia"
+}'
+
+curl -X DELETE http://localhost:8080/medicamentos/1
+
+
+RECEITAS
+
+curl -X GET http://localhost:8080/receitas
+
+curl -X GET http://localhost:8080/receitas/1
+
+curl -X POST http://localhost:8080/receitas -H "Content-Type: application/json" -d '{
+	"atendimento": 1,
+	"medicamentos": [1, 2],
+	"instrucoes": "faça isto e aquilo"
+}'
+
+curl -X PUT http://localhost:8080/receitas -H "Content-Type: application/json" -d '{
+	"id": 1,
+	"atendimento": 1,
+	"medicamentos": [1, 3],
+	"instrucoes": "faça isso ou aquilo"
+}'
+
+curl -X DELETE http://localhost:8080/receitas/1
